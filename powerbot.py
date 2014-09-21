@@ -28,8 +28,8 @@ from energenie import switch_on, switch_off
 """
 
 selfPath = os.path.realpath(__file__)
-qbAppID = "7232"
-qbUserID = "1265350"
+qbAppID = "14628"
+qbUserID = "1612594"
 qbUserPass = "niichavo"
 
 qbChatLogin = qbUserID + "-" + qbAppID + "@chat.quickblox.com"
@@ -37,7 +37,7 @@ qbChatNick = qbUserID
 
 user_jid = qbChatLogin
 user_password = qbUserPass
-room_jid = "7232_53baafe7535c1282fe019dda@muc.chat.quickblox.com"
+room_jid = "14628_541f4ab3535c124866028b17@muc.chat.quickblox.com"
 room_nick = qbChatNick
 
 counter = 0
