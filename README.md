@@ -4,7 +4,7 @@ sample-powerbot-python-rpi
 QuickBlox PowerBot
 
 <b>Usage</b><br />
-powerbot.py -d -r &lt;QuickBlox MUC room to join>
+powerbot.py -d -r &lt;QuickBlox MUC room to join&rt;
 <br />
 Example: powerbot.py -d -r 14628_541f4ab3535c124866028b17@muc.chat.quickblox.com
 
