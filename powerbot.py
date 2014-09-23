@@ -121,16 +121,76 @@ class MUCBot(sleekxmpp.ClientXMPP):
         [ 1:1 CHATS. In this section we handle private (1:1) chat messages received by our bot. These may include system messages such as MUC invitations. ]
         """
         
-        """
-        1:1 message test auto-reply
-        Uncomment the code lines below to make chat bot reply to any incoming 1:1 chat messages by quoting them
-        """
         
-        """
-        if msg['type'] in ('chat', 'normal'):
-            msg.reply("Thanks for sending\n%(body)s" % msg).send()
-        """
+        #
+        # Reply to help request (any message containing "powerbot" in it)
+        #
+        if msg['from'] != self.nick and "powerbot" in msg['body']:
+            
+            reply_test_message = self.make_message(mto=msg['from'].bare,
+                                                   mbody="Powerbot is greeting you, %s! Usage: [powerbot] lamp [on|off] to control socket 1, [powerbot] all [on:off] to control all sockets. Example: 'lamp on' switched socket 1 on." % msg['mucnick'],
+                                                   mtype='groupchat')
+            self.copy_dialog_id(msg, reply_test_message)
+            reply_test_message.send()
+            print "Sent help text: " + str(reply_test_message)
         
+        #
+        # Handle "lamp on" command
+        #
+        if msg['from'] != self.nick and "lamp on" in msg['body']:
+            
+            switch_on(lampSocket)
+            confirmation_message = self.make_message(mto=msg['from'].bare,
+                                                     mbody="Lamp has been switched on, %s." % msg['mucnick'],
+                                                     mtype='groupchat')
+            self.copy_dialog_id(msg, confirmation_message)
+            confirmation_message.send()
+            print "Lamp switched on, sent confirmation: " + str(confirmation_message)
+        
+        
+        #
+        # Handle "lamp off" command
+        #
+        if msg['from'] != self.nick and "lamp off" in msg['body']:
+            
+            switch_off(lampSocket)
+            confirmation_message = self.make_message(mto=msg['from'].bare,
+                                                     mbody="Lamp has been switched off, %s." % msg['mucnick'],
+                                                     mtype='groupchat')
+            self.copy_dialog_id(msg, confirmation_message)
+            confirmation_message.send()
+            print "Lamp switched off, sent confirmation: " + str(confirmation_message)
+        
+        
+        #
+        # Handle "all on" command
+        #
+        if msg['from'] != self.nick and "all on" in msg['body']:
+            
+            switch_off(lampSocket)
+            confirmation_message = self.make_message(mto=msg['from'].bare,
+                                                     mbody="All sockets have been switched on, %s." % msg['mucnick'],
+                                                     mtype='groupchat')
+            self.copy_dialog_id(msg, confirmation_message)
+            confirmation_message.send()
+            print "All sockets switched on, sent confirmation: " + str(confirmation_message)
+        
+        
+        #
+        # Handle "all off" command
+        #
+        if msg['from'] != self.nick and "all off" in msg['body']:
+            
+            switch_off(lampSocket)
+            confirmation_message = self.make_message(mto=msg['from'].bare,
+                                                     mbody="All sockets have been switched off, %s." % msg['mucnick'],
+                                                     mtype='groupchat')
+            self.copy_dialog_id(msg, confirmation_message)
+            confirmation_message.send()
+            print "All sockets switched off, sent confirmation: " + str(confirmation_message)
+
+
+
         """
         MUC auto-join:
         Let's listen for any MUC invites and join the corresponding MUC rooms once invited.
@@ -142,8 +202,6 @@ class MUCBot(sleekxmpp.ClientXMPP):
             y = BeautifulSoup(str(msg))
             roomToJoin = y.xmpp_room_jid.string
             print ("Got an invite to join room")
-            """os.system(selfPath + " -d -j " + qbChatLogin + " -r " + str(roomToJoin) + " -n " + qbChatNick + " -p " + qbUserPass)"""
-            """subprocess.call(selfPath + " -d -j " + qbChatLogin + " -r " + str(roomToJoin) + " -n " + qbChatNick + " -p " + qbUserPass, shell=True)"""
             botId = subprocess.Popen([selfPath + " -d -j " + qbChatLogin + " -r " + str(roomToJoin) + " -n " + qbChatNick + " -p " + qbUserPass], shell=True)
             print "spawned new bot ID="
             print botId
