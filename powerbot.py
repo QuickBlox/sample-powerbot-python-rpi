@@ -41,6 +41,8 @@ room_jid = "14628_541f4ab3535c124866028b17@muc.chat.quickblox.com"
 room_nick = qbChatNick
 
 counter = 0
+lampSocket = 1
+allSockets = 0
 
 # Python versions before 3.0 do not use UTF-8 encoding
 # by default. To ensure that Unicode is handled properly
@@ -186,7 +188,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
                                                      mbody="All sockets have been switched off, %s." % msg['mucnick'],
                                                      mtype='groupchat')
             self.copy_dialog_id(msg, confirmation_message)
-            confirmation_message.send()
+                confirmation_message.send()
             print "All sockets switched off, sent confirmation: " + str(confirmation_message)
 
 
@@ -269,7 +271,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
         #
         if msg['mucnick'] != self.nick and "all on" in msg['body']:
             
-            switch_off(lampSocket)
+            switch_off(allSockets)
             confirmation_message = self.make_message(mto=msg['from'].bare,
                                                      mbody="All sockets have been switched on, %s." % msg['mucnick'],
                                                      mtype='groupchat')
@@ -283,7 +285,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
         #
         if msg['mucnick'] != self.nick and "all off" in msg['body']:
             
-            switch_off(lampSocket)
+            switch_off(allSockets)
             confirmation_message = self.make_message(mto=msg['from'].bare,
                                                      mbody="All sockets have been switched off, %s." % msg['mucnick'],
                                                      mtype='groupchat')
