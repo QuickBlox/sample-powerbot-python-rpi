@@ -188,7 +188,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
                                                      mbody="All sockets have been switched off, %s." % msg['mucnick'],
                                                      mtype='groupchat')
             self.copy_dialog_id(msg, confirmation_message)
-                confirmation_message.send()
+            confirmation_message.send()
             print "All sockets switched off, sent confirmation: " + str(confirmation_message)
 
 
