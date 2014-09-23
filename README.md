@@ -1,7 +1,8 @@
 sample-powerbot-python-rpi
 ==========================
 
-QuickBlox PowerBot. Allows to control power sockets via chat. In current implementation Energenie RF controlled power sockets are used along with <a href="http://q-municate.com/">Q-municate open source IM / chat app</a> by QuickBlox, chat bot running on Raspberry Pi model B.
+QuickBlox PowerBot.<br />
+Allows to control power sockets via chat. In current implementation <a href="https://energenie4u.co.uk/index.php/catalogue/product/ENER314">Energenie RF controlled power sockets</a> are used along with <a href="http://q-municate.com/">Q-municate open source IM / chat app</a> by QuickBlox, this chat bot running on Raspberry Pi model B.
 
 <b>Usage</b><br />
 powerbot.py -d -r &lt;QuickBlox MUC room to join&gt;
