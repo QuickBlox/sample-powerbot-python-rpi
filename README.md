@@ -17,5 +17,5 @@ pip install dnspython<br />
 pip install pyasn1 pyasn1-modules<br />
 apt-get install python-rpi.gpio<br />
 
-<b>Notes/b><br />
+<b>Notes</b><br />
 For room auto-join to work, make the script executable ("chmod +x powerbot.py").<br />
