@@ -24,7 +24,7 @@ from energenie import switch_on, switch_off
 
 """
    IMPORTANT: for MUC auto-join to work, change these to your own script path and QuickBlox credentials.
-   Also make sure you made this script executable (chmod -x testbot.py).
+   Also make sure you made this script executable (chmod -x powerbot.py).
 """
 
 selfPath = os.path.realpath(__file__)
