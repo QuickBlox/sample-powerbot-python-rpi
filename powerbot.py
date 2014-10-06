@@ -130,7 +130,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
         if msg['from'] != self.nick and "powerbot" in msg['body']:
             
             reply_test_message = self.make_message(mto=msg['from'].bare,
-                                                   mbody="Powerbot is greeting you! Usage: [powerbot] lamp [on|off] to control socket 1, [powerbot] all [on:off] to control all sockets. Example: 'lamp on' switched socket 1 on.",
+                                                   mbody="Powerbot is greeting you! Usage: [powerbot] lamp [on|off] to control socket 1, [powerbot] all [on:off] to control all sockets. Example: 'lamp on' switches socket 1 on.",
                                                    mtype='chat')
             self.copy_dialog_id(msg, reply_test_message)
             reply_test_message.send()
@@ -232,7 +232,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
         if msg['mucnick'] != self.nick and "powerbot" in msg['body']:
 
             reply_test_message = self.make_message(mto=msg['from'].bare,
-                      mbody="Powerbot is greeting you, %s! Usage: [powerbot] lamp [on|off] to control socket 1, [powerbot] all [on:off] to control all sockets. Example: 'lamp on' switched socket 1 on." % msg['mucnick'],
+                      mbody="Powerbot is greeting you, %s! Usage: [powerbot] lamp [on|off] to control socket 1, [powerbot] all [on:off] to control all sockets. Example: 'lamp on' switches socket 1 on." % msg['mucnick'],
                       mtype='groupchat')
             self.copy_dialog_id(msg, reply_test_message)
             reply_test_message.send()
