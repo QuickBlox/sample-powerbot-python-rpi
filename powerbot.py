@@ -130,7 +130,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
         if msg['from'] != self.nick and "powerbot" in msg['body']:
             
             reply_test_message = self.make_message(mto=msg['from'].bare,
-                                                   mbody="Powerbot is greeting you, %s! Usage: [powerbot] lamp [on|off] to control socket 1, [powerbot] all [on:off] to control all sockets. Example: 'lamp on' switched socket 1 on." % msg['mucnick'],
+                                                   mbody="Powerbot is greeting you! Usage: [powerbot] lamp [on|off] to control socket 1, [powerbot] all [on:off] to control all sockets. Example: 'lamp on' switched socket 1 on.",
                                                    mtype='chat')
             self.copy_dialog_id(msg, reply_test_message)
             reply_test_message.send()
@@ -143,7 +143,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
             
             switch_on(lampSocket)
             confirmation_message = self.make_message(mto=msg['from'].bare,
-                                                     mbody="Lamp has been switched on, %s." % msg['mucnick'],
+                                                     mbody="Lamp has been switched on.",
                                                      mtype='chat')
             self.copy_dialog_id(msg, confirmation_message)
             confirmation_message.send()
@@ -157,7 +157,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
             
             switch_off(lampSocket)
             confirmation_message = self.make_message(mto=msg['from'].bare,
-                                                     mbody="Lamp has been switched off, %s." % msg['mucnick'],
+                                                     mbody="Lamp has been switched off.",
                                                      mtype='chat')
             self.copy_dialog_id(msg, confirmation_message)
             confirmation_message.send()
@@ -171,7 +171,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
             
             switch_off(lampSocket)
             confirmation_message = self.make_message(mto=msg['from'].bare,
-                                                     mbody="All sockets have been switched on, %s." % msg['mucnick'],
+                                                     mbody="All sockets have been switched on",
                                                      mtype='chat')
             self.copy_dialog_id(msg, confirmation_message)
             confirmation_message.send()
@@ -185,7 +185,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
             
             switch_off(lampSocket)
             confirmation_message = self.make_message(mto=msg['from'].bare,
-                                                     mbody="All sockets have been switched off, %s." % msg['mucnick'],
+                                                     mbody="All sockets have been switched off",
                                                      mtype='chat')
             self.copy_dialog_id(msg, confirmation_message)
             confirmation_message.send()
